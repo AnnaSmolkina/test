@@ -1,10 +1,9 @@
-import './App.css';
+import {TestFormComponent} from "./components/TestFofm/TestForm.component";
+
 
 function App() {
   return (
-    <div>
-      форма
-    </div>
+    <TestFormComponent/>
   );
 }
 
