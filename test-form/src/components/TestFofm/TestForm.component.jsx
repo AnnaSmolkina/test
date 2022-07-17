@@ -1,5 +1,5 @@
 import {
-	BackgroundWrapper, CheckNameStyled,
+	BackgroundWrapper, CheckNameStyled, ImageBlock, InputName, LabelName,
 	LeftBlockStyled,
 	RightBlock,
 	SubtitleStyled,
@@ -81,6 +81,7 @@ export const TestFormComponent = () => {
 				</TextStyled>
 			</LeftBlockStyled>
 			<RightBlock>
+				<ImageBlock src='/form.svg' />
 				<TitleStyled>
 					New user?
 				</TitleStyled>
@@ -91,12 +92,12 @@ export const TestFormComponent = () => {
 					{dataFormArray.map((element) => (
 						 element.type === 'text' || element.type === 'password' ? (
 							<div key={element.name}>
-								<label htmlFor={element.name}>{element.name}</label>
+								<LabelName htmlFor={element.name}>{element.name}</LabelName>
 								<input id={element.name} type={element.type}/>
 							</div>
 						) : (
 							 element.type === 'select' ? (
-								 <div>{element.name}
+								 <InputName>{element.name}
 								 <select>
 									 {element.options.map((nation)=> (
 										 <option key={nation.optionName} value={nation.value}>
@@ -104,10 +105,10 @@ export const TestFormComponent = () => {
 										 </option>
 									 ))}
 								 </select>
-								 </div>
+								 </InputName>
 							 ) : (
 								 element.type === 'radio' ? (
-									 <div > {element.name}
+									 <InputName > {element.name}
 										 {element.gender.map((gender) => (
 											 <CheckNameStyled key={gender.name}>
 												 <div>
@@ -116,7 +117,7 @@ export const TestFormComponent = () => {
 												 </div>
 												 </CheckNameStyled>
 										 ))}
-									 </div>
+									 </InputName>
 								 ) : null
 							 )
 						 )

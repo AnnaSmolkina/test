@@ -36,24 +36,44 @@ export const TextStyled = styled.div `
 `;
 
 export const RightBlock = styled.div `
+	position: relative;
+	font-family: 'WorkSans',sans-serif;
   width: 75%;
 	height: 481px;
-	background: white;
+	background-color: white;
+	
 `;
 
+export const ImageBlock = styled.img `
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	z-index: 0;
+`;
 export const TitleStyled = styled.div `
-	font-family: 'WorkSans',serif;
 	font-size: 22px;
 	line-height: 26px;
 	letter-spacing: -0.46px;
 	color: #111111;
 `;
 
+
+export const InputName = styled.div `
+	font-size: 12px;
+	line-height: 14px;
+	color: #7C7C7C;
+`;
+
+export const LabelName = styled.label `
+	font-size: 12px;
+	line-height: 14px;
+	color: #7C7C7C;
+`;
+
 export const SubtitleStyled = styled.div `
-	font-family: 'WorkSans',serif;
-	font-size: 22px;
-	line-height: 26px;
-	letter-spacing: -0.46px;
+	font-family: 'WorkSans',sans-serif;
+	font-size: 14px;
+	line-height: 16px;
 	color: #111111;
 `;
 
