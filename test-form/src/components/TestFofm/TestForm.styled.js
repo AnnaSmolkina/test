@@ -78,7 +78,36 @@ export const SubtitleStyled = styled.div `
 `;
 
 export  const CheckNameStyled = styled.div`
-display: flex;
+  display: flex;
 	flex-direction: row;
 	justify-content: space-around;
+`;
+
+export  const ElementFormStyled = styled.div`
+  display: flex;
+	flex-direction: column;
+	width: 45%;
+`;
+
+export  const SelectStyled = styled.div`
+  display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+`;
+
+export  const InputStyled = styled.div`
+	height: 20px;
+	border-bottom: solid #F2F2F2;
+`;
+
+export  const FormStyled = styled.div`
+  display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-around;
+`;
+export  const SelectItemStyled = styled.select`
+	height: 20px;
+	border: none;
+	border-bottom: solid #F2F2F2;
 `;
