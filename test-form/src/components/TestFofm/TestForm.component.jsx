@@ -1,13 +1,10 @@
 import {
-	BackgroundWrapper, ImageBlock,
+	BackgroundWrapper,
 	LeftBlockStyled,
-	RightBlock,
-	SubtitleStyled,
 	ImageStyled,
-	TitleStyled,
 	WrapperContainer
 } from "./TestForm.styled";
-import {FormContainer} from "./form.container";
+import {BlockWithFormContainer} from "./blockWithForm.container";
 
 export const TestFormComponent = () => (
 		<BackgroundWrapper>
@@ -17,16 +14,7 @@ export const TestFormComponent = () => (
 					<img src='/Signup.svg'/>
 				</ImageStyled>
 			</LeftBlockStyled>
-			<RightBlock>
-				<ImageBlock src='/form.svg' />
-				<TitleStyled>
-					New user?
-				</TitleStyled>
-				<SubtitleStyled>
-					Use the form below to create your account.
-				</SubtitleStyled>
-				<FormContainer/>
-			</RightBlock>
+		  <BlockWithFormContainer/>
 		</WrapperContainer>
 		</BackgroundWrapper>
 )

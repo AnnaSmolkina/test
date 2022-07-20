@@ -27,7 +27,7 @@ export const dataFormArray = [
 	},
 	{
 		name: 'E-mail',
-		type: 'text',
+		type: 'email',
 	},
 	{
 		name: 'Date of Birth',
