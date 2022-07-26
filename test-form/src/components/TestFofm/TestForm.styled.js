@@ -98,7 +98,7 @@ export  const InputStyled = styled.input`
 	border-bottom: solid #F2F2F2;
 `;
 
-export  const FormStyled = styled.div`
+export  const FormStyled = styled.form`
   display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
