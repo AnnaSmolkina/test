@@ -4,23 +4,28 @@ import {InputTypeSelect} from "./inputs/inputTypeSelect";
 import {InputTypeRadio} from "./inputs/inputTypeRadio";
 import {InputTypeDate} from "./inputs/inputTypeDate";
 import {ButtonWithLogInStyled, FormStyled, LogInStyled, SubmitButton} from "./TestForm.styled";
-import {useEffect, useState} from "react";
-import {validateEmail} from "../../validators/email.validator";
-import {validateIsEmpty} from "../../validators/empty.validator";
+import {useState} from "react";
+import {useInput} from "../../hooks/useInput.hook";
 
 
 export const FormContainer = () => {
-	const [formIsValid, setFormIsValid] = useState(false);
+
 	const [errorMessage, setErrorMessage] = useState('This field is required');
+	const [errorEmailMessage, setErrorEmailMessage] = useState('Not correct email');
+	const email = useInput('', {isEmpty:true, minLength: 3,});
+	const text = useInput('', {isEmpty:true, minLength: 3});
+	const password = useInput('', {isEmpty:true, minLength: 5});
 
 
-	useEffect(()=> {
-		if(errorMessage) {
-			setFormIsValid(false)
-		} else {
-			setFormIsValid(true)
-		}
-	}, [errorMessage]);
+
+	// useEffect((e)=> {
+	// 	const valid = validateEmail(e.target.value);
+	// 	if (!valid) {
+	// 		setFormIsValid(false)
+	// 	} else {
+	// 		setFormIsValid(true)
+	// 	}
+	// }, [errorEmailMessage]);
 
 
 	return (
@@ -30,15 +35,18 @@ export const FormContainer = () => {
 					<InputTypeText element={element}
 												 errorMessage={errorMessage}
 												 setErrorMessage={setErrorMessage}
+												 key={element.name}
+												 errorEmailMessage={errorEmailMessage}
+
 					/>
 				) : (
 					element.type === 'select' ? (
-						<InputTypeSelect element={element}/>
+						<InputTypeSelect key={element.name} element={element}/>
 					) : (
 						element.type === 'radio' ? (
-							<InputTypeRadio element={element}/>
+							<InputTypeRadio key={element.name} element={element}/>
 						) :  element.type === 'date' ? (
-							<InputTypeDate element={element}/>
+							<InputTypeDate key={element.name} element={element}/>
 						) : null
 					)
 				)
@@ -48,11 +56,12 @@ export const FormContainer = () => {
 					Have an account?
 					<span>Login</span>
 				</LogInStyled>
-				<SubmitButton disabled={!formIsValid}>
+				<SubmitButton disabled={!email.isInputValid ||
+				                        !password.isInputValid || text.isInputValid}
+				>
 					Complete Signup
 				</SubmitButton>
 			</ButtonWithLogInStyled>
-
 		</FormStyled>
 	)
 }

@@ -1,10 +1,12 @@
 export const dataFormArray = [
 	{
 		name: 'First Name',
+		isFirstName: true,
 		type: 'text',
 	},
 	{
 		name: 'Last Name',
+		isLastName: true,
 		type: 'text',
 	},
 	{
@@ -28,6 +30,7 @@ export const dataFormArray = [
 	{
 		name: 'E-mail',
 		type: 'email',
+		isEmail: true
 	},
 	{
 		name: 'Date of Birth',
@@ -56,10 +59,12 @@ export const dataFormArray = [
 	{
 		name: 'Password',
 		type: 'password',
+		isPassword: true
 	},
 	{
 		name: 'Confirm Password',
 		type: 'password',
+		isPassword: true
 	},
 ];
 

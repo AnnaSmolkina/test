@@ -1,40 +1,31 @@
 import {ElementFormStyled, InputStyled, LabelName} from "../TestForm.styled";
-import {useState} from "react";
+import {useInput} from "../../../hooks/useInput.hook";
 
 
-export const InputTypeText = ({element,
-																setErrorMessage,
-																errorMessage,
-}) => {
-	const [field, setField] = useState('');
-	const [fieldIsDirty, setFieldIsDirty] = useState(false);
+export const InputTypeText = ({element, errorMessage}) => {
+	const email = useInput('', {isEmpty:true, minLength: 3,});
+	const text = useInput('', {isEmpty:true, minLength: 3});
+	const password = useInput('', {isEmpty:true, minLength: 5});
 
-	const blurHandler = (e)=> {
-		switch (e.target.name) {
-			case 'field':
-				setFieldIsDirty(true)
-				break
-		}
-	};
-
-	const fieldHandler = (e) => {
-		setField(e.target.value)
-		if (e.target.value.length < 3 || e.target.value.length > 0 ) {
-			setErrorMessage ('')
-		} else {
-			setErrorMessage ('Min 3 symbols')
-		}
-	}
 	return (
-		<ElementFormStyled key={element.name}>
-			<LabelName htmlFor={element.name}>{element.name}</LabelName>
-			<InputStyled  onBlur={e => blurHandler(e)}
-										onChange={e => fieldHandler(e)}
-										id={element.name}
-										type={element.type}
-										name='field'
-										value={field}/>
-			{(fieldIsDirty && errorMessage) && <div style={{color:'red',fontSize:'10px'}}>{errorMessage}</div>}
-		</ElementFormStyled>
+			<ElementFormStyled>
+				<LabelName htmlFor={element.name}>{element.name}</LabelName>
+				<InputStyled  id={element.name}
+											type={element.type}
+											name={element.name}
+											onChange={element.isEmail ? e => email.onChange(e)
+												: element.isPassword ? e => password.onChange(e)
+												:  e => text.onChange(e) }
+											onBlur={element.isEmail ? e => email.onBlur(e)
+												: element.isPassword ? e => password.onBlur(e)
+												:  e => text.onBlur(e)}
+											value={element.isEmail ? email.value
+												: element.isPassword ? password.value
+															: text.value}
+				/>
+				{(email.isDirty && email.isEmpty) && <div style={{color:'red',fontSize:'10px'}}>{errorMessage}</div>}
+				{(password.isDirty && password.isEmpty) && <div style={{color:'red',fontSize:'10px'}}>{errorMessage}</div>}
+				{(text.isDirty && text.isEmpty) && <div style={{color:'red',fontSize:'10px'}}>{errorMessage}</div>}
+			</ElementFormStyled>
 	)
 }
