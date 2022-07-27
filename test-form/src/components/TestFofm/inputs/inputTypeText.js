@@ -2,8 +2,8 @@ import {ElementFormStyled, InputStyled, LabelName} from "../TestForm.styled";
 import {useInput} from "../../../hooks/useInput.hook";
 
 
-export const InputTypeText = ({element, errorMessage}) => {
-	const email = useInput('', {isEmpty:true, minLength: 3,});
+export const InputTypeText = ({element, errorMessage, errorEmailMessage}) => {
+	const email = useInput('', {isEmpty:true, minLength: 3,isValidEmail: false});
 	const text = useInput('', {isEmpty:true, minLength: 3});
 	const password = useInput('', {isEmpty:true, minLength: 5});
 
@@ -23,7 +23,8 @@ export const InputTypeText = ({element, errorMessage}) => {
 												: element.isPassword ? password.value
 															: text.value}
 				/>
-				{(email.isDirty && email.isEmpty) && <div style={{color:'red',fontSize:'10px'}}>{errorMessage}</div>}
+				{(email.isDirty && email.isEmpty || email.isValidEmail) && <div style={{color:'red',fontSize:'10px'}}>{errorMessage}</div>}
+				{(email.isDirty && email.isValidEmail) && <div style={{color:'red',fontSize:'10px'}}>{errorEmailMessage}</div>}
 				{(password.isDirty && password.isEmpty) && <div style={{color:'red',fontSize:'10px'}}>{errorMessage}</div>}
 				{(text.isDirty && text.isEmpty) && <div style={{color:'red',fontSize:'10px'}}>{errorMessage}</div>}
 			</ElementFormStyled>

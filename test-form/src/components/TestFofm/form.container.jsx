@@ -4,28 +4,18 @@ import {InputTypeSelect} from "./inputs/inputTypeSelect";
 import {InputTypeRadio} from "./inputs/inputTypeRadio";
 import {InputTypeDate} from "./inputs/inputTypeDate";
 import {ButtonWithLogInStyled, FormStyled, LogInStyled, SubmitButton} from "./TestForm.styled";
-import {useState} from "react";
+import { useState} from "react";
 import {useInput} from "../../hooks/useInput.hook";
+
 
 
 export const FormContainer = () => {
 
 	const [errorMessage, setErrorMessage] = useState('This field is required');
 	const [errorEmailMessage, setErrorEmailMessage] = useState('Not correct email');
-	const email = useInput('', {isEmpty:true, minLength: 3,});
+	const email = useInput('', {isEmpty:true, minLength: 3, isValidEmail: false});
 	const text = useInput('', {isEmpty:true, minLength: 3});
 	const password = useInput('', {isEmpty:true, minLength: 5});
-
-
-
-	// useEffect((e)=> {
-	// 	const valid = validateEmail(e.target.value);
-	// 	if (!valid) {
-	// 		setFormIsValid(false)
-	// 	} else {
-	// 		setFormIsValid(true)
-	// 	}
-	// }, [errorEmailMessage]);
 
 
 	return (
@@ -57,7 +47,8 @@ export const FormContainer = () => {
 					<span>Login</span>
 				</LogInStyled>
 				<SubmitButton disabled={!email.isInputValid ||
-				                        !password.isInputValid || text.isInputValid}
+				                        !password.isInputValid ||
+				                        !text.isInputValid }
 				>
 					Complete Signup
 				</SubmitButton>

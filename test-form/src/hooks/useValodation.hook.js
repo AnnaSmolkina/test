@@ -22,7 +22,7 @@ export const useValidation = (value, validations) => {
 					break
 				case 'isEmail':
 					const re = /^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/;
-					  re.test(String(value).toLowerCase()) ? setIsValidEmail(false) && setErrorMessage('Email is not correct') : setIsValidEmail(true);
+					  re.test(String(value).toLowerCase()) ? setIsValidEmail(true)  : setIsValidEmail(false) && setErrorMessage('Email is not correct');
 					break
 
 			}
